@@ -72,9 +72,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.aksw.graphql-over-sparql</groupId>
-			<artifactId>graphql-over-sparql-schemagen</artifactId>
-			<version>6.1.0-1-SNAPSHOT</version>
+			<groupId>org.aksw.graphql4sparql</groupId>
+			<artifactId>graphql4sparql-schemagen-cmds</artifactId>
 		</dependency>
 
 		<dependency>

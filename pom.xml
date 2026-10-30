@@ -56,13 +56,14 @@
 		<jersey.version>3.1.12</jersey.version>
 
 		<spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+		<spring.version>6.2.19</spring.version>
 
 		<jena.version>6.2.0</jena.version>
-		<jenax.version>6.1.0-2-SNAPSHOT</jenax.version>
-		<rmltk.version>6.1.0-1-SNAPSHOT</rmltk.version>
-		<conjure.version>5.6.0-1-SNAPSHOT</conjure.version>
+		<jenax.version>6.2.0-1-SNAPSHOT</jenax.version>
+		<rmltk.version>6.2.0-1-SNAPSHOT</rmltk.version>
+		<conjure.version>6.2.0-1-SNAPSHOT</conjure.version>
 		<sansa.version>0.9.7-SNAPSHOT</sansa.version>
-		<graphql-over-sparql.version>6.1.0-1-SNAPSHOT</graphql-over-sparql.version>
+		<graphql4sparql.version>0.7.1-SNAPSHOT</graphql4sparql.version>
 		
 		<!-- <jenax.version>3.14.0-2-SNAPSHOT</jenax.version> -->
 		<!-- <slf4j.version>1.8.0-beta4</slf4j.version> -->
@@ -111,6 +112,24 @@
 	</properties>
 	<dependencyManagement>
 		<dependencies>
+			<!-- Must come before jena-bom: jena-bom's parent chain imports
+			shiro-bom, which pins several spring artifacts to 5.3.39; first
+			declaration in dependencyManagement wins -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${spring.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.jena</groupId>
+				<artifactId>jena-bom</artifactId>
+				<version>${jena.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
 			<dependency>
 				<groupId>org.aksw.jenax</groupId>
 				<artifactId>jenax-bom</artifactId>
@@ -253,9 +272,9 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.aksw.graphql-over-sparql</groupId>
-				<artifactId>graphql-over-sparql-bom</artifactId>
-				<version>${graphql-over-sparql.version}</version>
+				<groupId>org.aksw.graphql4sparql</groupId>
+				<artifactId>graphql4sparql-bom</artifactId>
+				<version>${graphql4sparql.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
